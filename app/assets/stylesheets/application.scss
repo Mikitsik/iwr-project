@@ -10,7 +10,41 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *=require_tree .
+ *=require_self
  */
 
 @import 'bootstrap';
 
+.nav-link {
+  font-size: 1.5rem;
+  margin: 1rem;
+}
+.welcom{
+  .btn {
+    -webkit-box-shadow: 0.3rem 0.8rem 0.8rem 0.3rem rgba(0, 0, 0, 0.9) !important;
+    box-shadow: 0.3rem 0.8rem 0.8rem 0.3rem rgba(0, 0, 0, 0.9) !important;
+    padding: 1.25rem 2rem;
+    margin: 2rem 0;
+    font-family: 'Varela Round';
+    text-transform: uppercase;
+    letter-spacing: .65rem;
+    border: 0;
+  }
+  .btn-primary {
+    background-color: transparent;
+    &:hover {
+      background-color: #4f837f;
+    }
+    &:focus {
+      background-color: #4f837f;
+      color: white;
+    }
+  }
+}
+
+footer {
+  font-size: 1rem;
+  color: white;
+  margin-bottom: 1rem;
+}

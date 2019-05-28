@@ -23,4 +23,5 @@ ActiveRecord::Schema.define(version: 2019_05_23_230216) do
     t.datetime "updated_at", null: false
     t.string "telephone"
   end
+
 end

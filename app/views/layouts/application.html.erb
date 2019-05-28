@@ -4,19 +4,15 @@
     <title>IwrProject</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-</head>
+  </head>
 
   <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-      <a class="navbar-brand" href="#">Navbar</a>
-    </nav>
+    <%= render 'shared/navbar/navbar' %>
 
     <%= yield %>
 
+    <%= render 'shared/footer/footer' %>
   </body>
 </html>
