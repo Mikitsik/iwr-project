@@ -19,13 +19,13 @@
         .form-label-group
           = password_field_tag 'inputPassword', nil, class: 'form-control', placeholder: 'Password', required: true
         .custom-control.custom-checkbox.mb-3
-          input#customCheck1.custom-control-input type="checkbox" /
+          input#customCheck1.custom-control-input type="checkbox" checked="checked"
           label.custom-control-label for="customCheck1"  Remember me
-        button.btn.btn-lg.btn-primary.btn-block.text-uppercase type="submit"  Sign in
+        button.btn.btn-lg.btn-facebook.btn-block.text-uppercase type="submit"  Sign in
         hr.my-4/
         button.btn.btn-lg.btn-google.btn-block.text-uppercase type="submit"
-          i.fab.fa-google.mr-2
+          i.fa.fa-lg.fa-google.mr-3
           | Sign in with Google
         button.btn.btn-lg.btn-github.btn-block.text-uppercase type="submit"
-          i.fab.fa-github.mr-2
+          i.fa.fa-lg.fa-github.mr-3
           | Sign in with GitHub

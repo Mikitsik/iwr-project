@@ -74,3 +74,11 @@
   }
 }
 
+.form-signin {
+  .btn-primary {
+    background-color: #4f837f;
+    &:hover {
+      background-color: #4f837f;
+    }
+  }
+}
