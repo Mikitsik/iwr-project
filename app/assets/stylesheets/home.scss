@@ -46,3 +46,39 @@
 .lead {
   margin: 1.2rem;
 }
+
+
+
+
+
+.welcom{
+  .btn {
+    -webkit-box-shadow: 0.3rem 0.8rem 0.8rem 0.3rem rgba(0, 0, 0, 0.9) !important;
+    box-shadow: 0.3rem 0.8rem 0.8rem 0.3rem rgba(0, 0, 0, 0.9) !important;
+    padding: 1.25rem 2rem;
+    margin: 2rem 0;
+    font-family: 'Varela Round';
+    text-transform: uppercase;
+    letter-spacing: .65rem;
+    border: 0;
+  }
+  .btn-primary {
+    background-color: transparent;
+    &:hover {
+      background-color: #4f837f;
+    }
+    &:focus {
+      background-color: #4f837f;
+      color: white;
+    }
+  }
+}
+
+.form-signin {
+  .btn-primary {
+    background-color: #4f837f;
+    &:hover {
+      background-color: #4f837f;
+    }
+  }
+}
