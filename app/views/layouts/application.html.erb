@@ -4,13 +4,20 @@
     <title>IwrProject</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <%= render 'shared/navbar/navbar' %>
+    <% if logged_in? %>
+      <%= render 'shared/navbar/navbar' %>
 
-    <%= yield %>
+      <%= yield %>
 
+    <% else %>
+      <%= render 'shared/navbar/navbar' %>
+
+      <%= yield %>
+
+    <% end %>
     <%= render 'shared/footer/footer' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
