@@ -4,7 +4,3 @@ div id="profile"
     = @profile.id
 div
   = link_to :edit, edit_profile_path
-div
-  = link_to :destroy, profile_path(@profile),
-              method: :delete,
-              data: { confirm: 'Are you sure?' }
