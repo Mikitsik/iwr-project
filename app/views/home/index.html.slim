@@ -1,31 +1,4 @@
-.index
-  .overlay
-  = video_tag(["iwr.mp4"], autoplay: true, loop: true, muted: true, playsinline: "playsinline")
-  .container.h-100
-    .d-flex.h-100.text-center.align-items-center
-      .w-100.text-white.welcom
-        h1.display-3 I WANT RELOCATE!
-        p.lead.mb-0 Change your dream-job office today
-        button#getstarted.btn.btn-primary.text-uppercase onclick="login()"
-          | Get Started
-.underlay.fixed-top#loginlay.d-none
-.container
-  .card.card-signin.my-5#loginlayunder.d-none.fixed-top
-    .card-body
-      h5.card-title.text-center Sign In
-      form.form-signin
-        .form-label-group
-          = email_field_tag 'inputEmail', nil, class: 'form-control', autofocus: true, placeholder: 'Email address', required: true
-        .form-label-group
-          = password_field_tag 'inputPassword', nil, class: 'form-control', placeholder: 'Password', required: true
-        .custom-control.custom-checkbox.mb-3
-          input#customCheck1.custom-control-input type="checkbox" checked="checked"
-          label.custom-control-label for="customCheck1"  Remember me
-        button.btn.btn-lg.btn-facebook.btn-block.text-uppercase type="submit"  Sign in
-        hr.my-4
-        button.btn.btn-lg.btn-google.btn-block.text-uppercase type="submit"
-          i.fa.fa-lg.fa-google.mr-3
-          | Sign in with Google
-        button.btn.btn-lg.btn-github.btn-block.text-uppercase type="submit"
-          i.fa.fa-lg.fa-github.mr-3
-          | Sign in with GitHub
+- if logged_in?
+  = render 'shared/home/for_logged_users'
+- else
+  = render 'shared/home/for_unregistered_users'

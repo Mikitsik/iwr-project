@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   get '/login',  to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
-resources :users
-resources :profiles, except: [:index]
+
+  resources :users, param: :user_id, only: [:new, :create]
+  resources :profiles, except: [:index]
 
 end
