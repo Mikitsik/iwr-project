@@ -44,7 +44,13 @@ footer {
   }
   .card-body {
     padding: 2rem;
+    h5 {
+      color: #345654;
+    }
   }
+}
+label {
+  color: #345654;
 }
 .form-signin {
   width: 100%;
@@ -90,21 +96,32 @@ footer {
   color: white;
   background-color: #444444;
 }
-
-
 .btn-facebook {
   color: white;
   background-color: #4f837f;
 }
-
 .underlay {
   background-color: rgba(0, 0, 0, .7);
   height: 100vh;
   z-index: 1050;
 }
-
-#loginlayunder {
+#loginlayunder, #registerlayunder {
   max-width: 350px;
   margin: 0 auto;
   z-index: 1051;
+}
+#register, #fogotpass, #loginback {
+  margin-bottom: 10px;
+  color: #345654;
+  text-decoration: underline;
+  transition: all .2s ease-in-out;
+  &:hover {
+    cursor: pointer;
+    color: #353456;
+  }
+}
+#register, #loginback {
+  &:hover{
+    transform: scale(1.3, 1.3);
+  }
 }
