@@ -43,7 +43,7 @@ $( "#loginback" ).click( function() {
   $( "#loginlay" ).removeClass( "d-none" );
   $( "#loginlayunder" ).removeClass( "d-none" );
   sessionEmail.focus();
-})
+});
 
 userEmail.addEventListener( "keyup", function() {
   if ( regExpEmail.test( userEmail.value )) {
