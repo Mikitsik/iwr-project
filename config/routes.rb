@@ -12,3 +12,4 @@ Rails.application.routes.draw do
 
   resources :users, param: :user_id, only: %i[new create]
   resources :profiles, only: %i[show edit update]
+end
