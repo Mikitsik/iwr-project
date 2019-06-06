@@ -6,13 +6,22 @@ var userName = document.querySelector("#user_name"),
     redAlert = function() {
       userEmail.style.border = "solid red 2px";
       $( "#goodnote" ).addClass( "d-none" );
+      $( "#hintalert" ).addClass( "d-none" );
       $( "#badnote" ).removeClass( "d-none" );
     },
     greenAlert = function() {
       userEmail.style.border = "solid green 2px";
       $( "#badnote" ).addClass( "d-none" );
+      $( "#hintalert" ).addClass( "d-none" );
       $( "#goodnote" ).removeClass( "d-none" );
+    },
+    hintAlert = function() {
+      userEmail.style.border = "solid blue 2px";
+      $( "#badnote" ).addClass( "d-none" );
+      $( "#goodnote" ).addClass( "d-none" );
+      $( "#hintalert" ).removeClass( "d-none" );
     };
+
 
 $( "#getstarted" ).click( function() {
   $( "#loginlay" ).removeClass( "d-none" );
@@ -45,22 +54,29 @@ $( "#loginback" ).click( function() {
   sessionEmail.focus();
 });
 
+userEmail.onblur = function() {
+  $( "#goodnote" ).addClass( "d-none" );
+  $( "#hintalert" ).addClass( "d-none" );
+  userEmail.style.border = "1px solid #ced4da";
+};
+
 userEmail.addEventListener( "keyup", function() {
   if ( regExpEmail.test( userEmail.value )) {
     var xmlhttp = new XMLHttpRequest();
 
     xmlhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-        if (this.responseText) {
+     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        var h = JSON.parse(xmlhttp.responseText);
+        if (h.message == 'success') {
               greenAlert();
             } else {
               redAlert();
             }
           }
         };
-      xmlhttp.open("GET", "gethint.php?q=" + str, true);
+      xmlhttp.open("GET", "/users/email?email=" + userEmail.value, true);
       xmlhttp.send();
   } else {
-    redAlert();
+    hintAlert();
   }
 });
