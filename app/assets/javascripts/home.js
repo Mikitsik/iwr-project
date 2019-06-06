@@ -3,23 +3,30 @@ var userName = document.querySelector("#user_name"),
     sessionEmail = document.querySelector("#session_email"),
     userEmail = document.querySelector("#user_email"),
     regExpEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+    switchbutton = document.querySelector("#switchbutton"),
     redAlert = function() {
       userEmail.style.border = "solid red 2px";
       $( "#goodnote" ).addClass( "d-none" );
       $( "#hintalert" ).addClass( "d-none" );
       $( "#badnote" ).removeClass( "d-none" );
+      switchbutton.setAttribute("disabled", true);
+      switchbutton.style.cursor = "not-allowed";
     },
     greenAlert = function() {
       userEmail.style.border = "solid green 2px";
       $( "#badnote" ).addClass( "d-none" );
       $( "#hintalert" ).addClass( "d-none" );
       $( "#goodnote" ).removeClass( "d-none" );
+      switchbutton.removeAttribute("disabled", true);
+      switchbutton.style.cursor = "pointer";
     },
     hintAlert = function() {
       userEmail.style.border = "solid blue 2px";
       $( "#badnote" ).addClass( "d-none" );
       $( "#goodnote" ).addClass( "d-none" );
       $( "#hintalert" ).removeClass( "d-none" );
+      switchbutton.setAttribute("disabled", true);
+      switchbutton.style.cursor = "not-allowed";
     };
 
 
