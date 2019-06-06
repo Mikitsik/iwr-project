@@ -38,10 +38,10 @@ class UsersController < ApplicationController
   end
 
   def email_uniq?
-    if User.find_by(email: "#{request.params["email"]}").nil?
-      render :json => {:message => "success"}
+    if User.find_by(email: request.params['email'].to_s).nil?
+      render json: { message: 'success' }
     else
-      render :json => {:message => "not available"}
+      render json: { message: 'not available' }
     end
   end
 
