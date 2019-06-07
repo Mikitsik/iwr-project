@@ -3,6 +3,7 @@
 # Profile model
 class Profile < ApplicationRecord
   belongs_to :user
+  has_one_attached :avatar
 
   validates :telephone, presence: true, numericality: true,
                         length: { minimum: 10, maximum: 15 }

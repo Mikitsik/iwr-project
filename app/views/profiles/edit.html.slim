@@ -8,6 +8,10 @@
             = form_for(@profile) do |f|
                 = render 'shared/register_error_messages', object: @profile
                 div class="field"
+                = f.label :avatar
+                br
+                = f.file_field :avatar
+                div class="field"
                 = f.label :country
                 br
                 = f.country_select :country_code, :class => 'form-control'

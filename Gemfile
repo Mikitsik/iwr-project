@@ -37,6 +37,8 @@ gem 'country_select', '~> 4.0'
 gem 'font-awesome-rails'
 gem 'pundit'
 gem 'slim-rails'
+# gem "aws-sdk-s3", require: false
+gem 'gravatar_image_tag'
 gem 'travis'
 group :development, :test do
   # Enter your gem
