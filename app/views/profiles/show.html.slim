@@ -1,7 +1,10 @@
 div id="profile"
-
+  div class="profile-avatar"
+    - if @profile.avatar.attached?
+      = image_tag @profile.avatar.variant(resize: "130x130"), class: 'rounded-circle'
+    - else
+      = image_tag gravatar_image_url(current_user.email, size: 130), height: 130, width: 130, class: 'rounded-circle'
   div class="bloktron" id="profile-info-head"
-    = image_tag(@profile.avatar)
     div class="container"
       h1
         | #{@profile.user_name}  #{@profile.user_surname}
