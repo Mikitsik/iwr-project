@@ -32,14 +32,14 @@ group :test do
 end
 
 # IWR gems
+gem 'aws-sdk-s3', require: false
 gem 'bcrypt', '>= 3.1.12'
 gem 'country_select', '~> 4.0'
 gem 'font-awesome-rails'
+gem 'gravatar_image_tag'
+gem 'mini_magick'
 gem 'pundit'
 gem 'slim-rails'
-gem 'mini_magick'
-gem "aws-sdk-s3", require: false
-gem 'gravatar_image_tag'
 gem 'travis'
 group :development, :test do
   # Enter your gem
