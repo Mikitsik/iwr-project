@@ -38,7 +38,7 @@ gem 'font-awesome-rails'
 gem 'pundit'
 gem 'slim-rails'
 gem 'mini_magick'
-# gem "aws-sdk-s3", require: false
+gem "aws-sdk-s3", require: false
 gem 'gravatar_image_tag'
 gem 'travis'
 group :development, :test do
