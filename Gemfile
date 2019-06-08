@@ -41,13 +41,13 @@ gem 'mini_magick'
 gem 'pundit'
 gem 'slim-rails'
 gem 'travis'
+gem 'bootstrap'
+gem 'jquery-rails'
 group :development, :test do
   # Enter your gem
 end
 group :development do
   # Enter your gem
-  gem 'bootstrap'
-  gem 'jquery-rails'
 end
 group :test do
   # Enter your gem
