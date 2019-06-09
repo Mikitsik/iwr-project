@@ -32,7 +32,7 @@ group :test do
 end
 
 # IWR gems
-gem 'aws-sdk-s3', require: false
+gem "google-cloud-storage", "~> 1.8", require: false
 gem 'bcrypt', '>= 3.1.12'
 gem 'country_select', '~> 4.0'
 gem 'font-awesome-rails'
