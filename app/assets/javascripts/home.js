@@ -76,7 +76,6 @@ userEmail.addEventListener( "keyup", function() {
     var xmlhttp = new XMLHttpRequest();
 
     xmlhttp.onreadystatechange = function() {
-      console.log(xmlhttp.status);
      if (xmlhttp.readyState == 4 && xmlhttp.status == 204) {
         redAlert();
       } else if (xmlhttp.readyState == 4 && xmlhttp.status == 404) {
