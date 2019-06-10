@@ -11,6 +11,14 @@ class Profile < ApplicationRecord
                            length: { minimum: 2, maximum: 2 }
   validates :city, presence: true, length: { minimum: 3, maximum: 20 }
   validates :birthday, presence: true
+  validates :avatar, attached: true,
+            content_type: ['image/png', 'image/jpg', 'image/jpeg'],
+            dimension: { width: { min: 100, max: 2400 },
+                         height: { min: 100, max: 1800 },
+                         message: 'is not given between dimension' },
+            size: { less_than: 100.megabytes ,
+                    message: 'is not given between size' }
+
 
   def country_name
     country = ISO3166::Country[country_code]
