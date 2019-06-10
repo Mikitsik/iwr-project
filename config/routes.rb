@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  get '/users/email', to: 'users#email_uniq?'
+  get '/user/existence/:email', to: 'users#email_uniq?', constraints: { email: /.+\..+/}
 
   resources :users, param: :user_id, except: %i[index new]
   resources :profiles, only: %i[show edit update]

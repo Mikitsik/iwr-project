@@ -5,30 +5,32 @@ var userName = document.querySelector("#user_name"),
     regExpEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
     switchbutton = document.querySelector("#switchbutton"),
     redAlert = function() {
-      userEmail.style.border = "solid red 2px";
       $( "#goodnote" ).addClass( "d-none" );
       $( "#hintalert" ).addClass( "d-none" );
       $( "#badnote" ).removeClass( "d-none" );
+      $( "#user_email" ).removeClass( "greenalert hintalert onblur");
+      $( "#user_email" ).addClass( "redalert");
       switchbutton.setAttribute("disabled", true);
-      switchbutton.style.cursor = "not-allowed";
+      $( "#switchbutton" ).addClass( "notallowed");
     },
     greenAlert = function() {
-      userEmail.style.border = "solid green 2px";
       $( "#badnote" ).addClass( "d-none" );
       $( "#hintalert" ).addClass( "d-none" );
       $( "#goodnote" ).removeClass( "d-none" );
+      $( "#user_email" ).removeClass( "redalert hintalert onblur");
+      $( "#user_email" ).addClass( "greenalert" );
       switchbutton.removeAttribute("disabled", true);
-      switchbutton.style.cursor = "pointer";
+      $( "#switchbutton" ).addClass( "pointer");
     },
     hintAlert = function() {
-      userEmail.style.border = "solid blue 2px";
       $( "#badnote" ).addClass( "d-none" );
       $( "#goodnote" ).addClass( "d-none" );
       $( "#hintalert" ).removeClass( "d-none" );
+      $( "#user_email" ).removeClass( "redalert greenalert onblur");
+      $( "#user_email" ).addClass( "hintalert" );
       switchbutton.setAttribute("disabled", true);
-      switchbutton.style.cursor = "not-allowed";
+      $( "#switchbutton" ).addClass( "notallowed");
     };
-
 
 $( "#getstarted" ).click( function() {
   $( "#loginlay" ).removeClass( "d-none" );
@@ -62,9 +64,11 @@ $( "#loginback" ).click( function() {
 });
 
 userEmail.onblur = function() {
+  $( "#badnote" ).addClass( "d-none" );
   $( "#goodnote" ).addClass( "d-none" );
   $( "#hintalert" ).addClass( "d-none" );
-  userEmail.style.border = "1px solid #ced4da";
+  $( "#user_email" ).removeClass( "redalert greenalert hintalert");
+  $( "#user_email" ).addClass( "onblur");
 };
 
 userEmail.addEventListener( "keyup", function() {
@@ -72,17 +76,15 @@ userEmail.addEventListener( "keyup", function() {
     var xmlhttp = new XMLHttpRequest();
 
     xmlhttp.onreadystatechange = function() {
-     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-        var h = JSON.parse(xmlhttp.responseText);
-        if (h.message == 'success') {
-              greenAlert();
-            } else {
-              redAlert();
-            }
-          }
-        };
-      xmlhttp.open("GET", "/users/email?email=" + userEmail.value, true);
-      xmlhttp.send();
+      console.log(xmlhttp.status);
+     if (xmlhttp.readyState == 4 && xmlhttp.status == 204) {
+        redAlert();
+      } else if (xmlhttp.readyState == 4 && xmlhttp.status == 404) {
+        greenAlert();
+      }
+    }
+    xmlhttp.open("GET", "/user/existence/" + userEmail.value, true);
+    xmlhttp.send();
   } else {
     hintAlert();
   }
