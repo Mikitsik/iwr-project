@@ -7,14 +7,13 @@ class Profile < ApplicationRecord
 
   validates :telephone, presence: true, numericality: true,
                         length: { minimum: 10, maximum: 15 }
-  validates :country_code, presence: true,
+  validates :country_code, presence: true, content_type: 'image/png',
                            length: { minimum: 2, maximum: 2 }
   validates :city, presence: true, length: { minimum: 3, maximum: 20 }
   validates :birthday, presence: true
   validates :avatar, attached: true,
-                     content_type: 'image/png',
-                     dimension: { width: { min: 100, max: 2400 },
-                                  height: { min: 100, max: 1800 },
+                     dimension: { width: { min: 80, max: 2400 },
+                                  height: { min: 80, max: 1800 },
                                   message: 'is not given between dimension' },
                      size: { less_than: 100.megabytes,
                              message: 'is not given between size' }
