@@ -226,6 +226,9 @@ GEM
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 1.7)
+    rubocop-rails (2.0.1)
+      rack (>= 1.1)
+      rubocop (>= 0.70.0)
     ruby-progressbar (1.10.1)
     ruby_dep (1.5.0)
     rubyzip (1.2.3)
@@ -336,6 +339,7 @@ DEPENDENCIES
   rails-controller-testing
   rspec-rails (~> 3.8)
   rubocop
+  rubocop-rails
   sass-rails (~> 5.0)
   selenium-webdriver
   shoulda-matchers
@@ -352,4 +356,4 @@ RUBY VERSION
    ruby 2.5.5p157
 
 BUNDLED WITH
-   2.0.1
+   2.0.2
