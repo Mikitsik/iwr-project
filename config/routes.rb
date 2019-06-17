@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'home/index'
-
   root 'home#index'
+
+  get 'home/index'
 
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
@@ -23,4 +23,5 @@ Rails.application.routes.draw do
   resources :vacancies, param: :vac_id, except: %i[edit]
   resources :users, param: :user_id, except: %i[index new]
   resources :profiles, only: %i[show edit update]
+  resources :account_activations, only: %i[edit]
 end
