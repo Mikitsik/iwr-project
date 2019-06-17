@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_12_145428) do
+ActiveRecord::Schema.define(version: 2019_06_17_120658) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,9 @@ ActiveRecord::Schema.define(version: 2019_06_12_145428) do
     t.datetime "updated_at", null: false
     t.string "password_digest"
     t.string "remember_digest"
+    t.string "activation_digest"
+    t.boolean "activated", default: false
+    t.datetime "activated_at"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
@@ -106,11 +109,11 @@ ActiveRecord::Schema.define(version: 2019_06_12_145428) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "profiles", "users"
   add_foreign_key "user_skill_levels", "skills"
   add_foreign_key "user_skill_levels", "users"
   add_foreign_key "vacancies", "users"
   add_foreign_key "vacancies", "vacancy_specialties", column: "specialty_id"
   add_foreign_key "vacancy_attributes", "vacancies"
-  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
 end

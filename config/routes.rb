@@ -28,4 +28,4 @@ Rails.application.routes.draw do
   resources :users, param: :user_id, except: %i[index new]
   resources :profiles, param: :user_id, only: %i[show edit update]
   resources :account_activations, only: %i[edit]
-
+end

@@ -2,7 +2,9 @@
 
 class User < ApplicationRecord
   include Authenticatable
-  attr_accessor :remember_token
+  attr_accessor :remember_token, :activation_token
+  before_save :downcase_email
+  before_create :create_activation_digest
   has_one :profile, dependent: :destroy
   has_many :vacancies, dependent: :destroy
 
@@ -11,8 +13,6 @@ class User < ApplicationRecord
   has_many :skills, through: :skill_levels
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.freeze
-
-  before_save { self.email = email.downcase }
 
   validates :name, presence: true, length: { minimum: 2, maximum: 30 }
   validates :surname, presence: true, length: { minimum: 5, maximum: 50 }
@@ -31,4 +31,15 @@ class User < ApplicationRecord
   def blank(attributes)
     attributes['level'].blank?
   end
+
+  private
+
+    def downcase_email
+      self.email = email.downcase
+    end
+
+    def create_activation_digest
+      self.activation_token = User.new_token
+      self.activation_digest = User.digest(activation_token)
+    end
 end
