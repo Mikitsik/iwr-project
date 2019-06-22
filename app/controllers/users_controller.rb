@@ -4,14 +4,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      UserMailer.account_activation(@user).deliver_now
-    # flash[:info] = "Please check your email to activate your account."
-    # redirect_to root_url
-
-    # ProfileCreateService.new(user_id: @user.id).call!
-    # log_in @user
-    #  flash[:success] = 'Welcome, registration is successful.'
-     redirect_to root_path
+      @user.send_activation_email
+      flash[:info] = "YaY! Check your mailbox to proceed! ;-)"
+      redirect_to root_path
     else
       flash[:danger] = 'Oops'
     end

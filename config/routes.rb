@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   end
 
   resources :vacancies, param: :vac_id, except: %i[edit]
-  resources :users, param: :user_id, except: %i[index new]
+  resources :users, param: :user_id, except: %i[index new show]
   resources :profiles, param: :user_id, only: %i[show edit update]
   resources :account_activations, only: %i[edit]
 end
