@@ -105,12 +105,12 @@ label {
   height: 100vh;
   z-index: 1050;
 }
-#loginlayunder, #registerlayunder, #resetlayunder {
+#loginlayunder, #registerlayunder, #resetlayunder, #passresetlayunder {
   max-width: 350px;
   margin: 0 auto;
   z-index: 1051;
 }
-#resetlayunder {
+#resetlayunder, #passresetlayunder {
   margin: 130px auto;
 }
 #fogotpass, #register, #loginback, #backmodal {
