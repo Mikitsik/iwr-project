@@ -7,8 +7,6 @@ class UsersController < ApplicationController
       @user.send_activation_email
       flash[:info] = "YaY! Check your mailbox to proceed! ;-)"
       redirect_to root_path
-    else
-      flash[:danger] = 'Oops'
     end
   end
 
