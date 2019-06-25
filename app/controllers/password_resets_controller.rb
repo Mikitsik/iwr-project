@@ -1,20 +1,19 @@
+# frozen_string_literal: true
+
 class PasswordResetsController < ApplicationController
-  before_action :get_user,   only: [:edit, :update]
-  before_action :valid_user, only: [:edit, :update]
-  before_action :check_expiration, only: [:edit, :update]
+  before_action :obtain_user, only: %i[edit update]
+  before_action :valid_user, only: %i[edit update]
+  before_action :check_expiration, only: %i[edit update]
 
   def create
     @user = User.find_by(email: params[:password_reset][:email].downcase)
-    if @user
-      @user.create_reset_digest
-      @user.send_password_reset_email
-      flash[:info] = "Boom! Password reset instructions have been sent! ;-)"
-      redirect_to root_path
-    end
+    @user.create_reset_digest
+    @user.send_password_reset_email
+    flash[:info] = 'Boom! Password reset instructions have been sent! ;-)'
+    redirect_to root_path
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if params[:user][:password].empty?
@@ -22,7 +21,7 @@ class PasswordResetsController < ApplicationController
       render 'edit'
     elsif @user.update_attributes(user_params)
       log_in @user
-      flash[:success] = "Yeah! New password has been set! ;-)"
+      flash[:success] = 'Yeah! New password has been set! ;-)'
       redirect_to root_path
     else
       render 'edit'
@@ -31,25 +30,23 @@ class PasswordResetsController < ApplicationController
 
   private
 
-    def user_params
-      params.require(:user).permit(:password, :password_confirmation)
-    end
+  def user_params
+    params.require(:user).permit(:password, :password_confirmation)
+  end
 
-    def get_user
-      @user = User.find_by(email: params[:email])
-    end
+  def obtain_user
+    @user = User.find_by(email: params[:email])
+  end
 
-    def valid_user
-      unless (@user && @user.activated? &&
-              @user.authenticated?(:reset, params[:id]))
-        redirect_to root_path
-      end
+  def valid_user
+    unless @user&.activated? &&
+           @user&.authenticated?(:reset, params[:id])
+      redirect_to root_path
     end
+  end
 
-    def check_expiration
-      if @user.password_reset_expired?
-        flash[:danger] = "Password reset has expired."
-        redirect_to root_path
-      end
-    end
+  def check_expiration
+    flash[:info] = 'Password reset has expired' if @user.password_reset_expired?
+    redirect_to root_path
+  end
 end

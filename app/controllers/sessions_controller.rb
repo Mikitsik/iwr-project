@@ -3,18 +3,19 @@
 class SessionsController < ApplicationController
   def create
     @user = User.find_by(email: params[:session][:email].downcase)
-    if @user&.authenticate(params[:session][:password])
-       if @user.activated?
-        log_in @user
-        params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
-        redirect_to profile_path(user_profile)
-      else
-        message  = "Uh-oh! You didn't check your mailbox yet?"
-        flash[:warning] = message
-        redirect_to root_path
-      end
+    return unless @user&.authenticate(params[:session][:password])
+
+    user_activation_check
+  end
+
+  def user_activation_check
+    if @user.activated?
+      log_in @user
+      params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
+      redirect_to profile_path(user_profile)
     else
-      flash[:danger] = 'Invalid email or password combination'
+      flash[:warning] = "Uh-oh! You didn't check your mailbox yet?"
+      redirect_to root_path
     end
   end
 
