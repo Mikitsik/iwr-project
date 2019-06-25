@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     patch '/publish', to: 'publish#update'
     resources :attributes, param: :attr_id, except: %i[show new]
     resources :country_search, only: %i[index]
+    resources :requests, only: %i[index create]
   end
 
   resources :vacancies, param: :vac_id, except: %i[edit]
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
     resource :skill_level, only: %i[edit]
     resource :education, only: %i[edit update]
   end
+
 
   resources :vacancies, param: :vac_id, except: %i[edit]
   resources :users, param: :user_id, except: %i[index new show]
