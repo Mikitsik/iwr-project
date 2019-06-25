@@ -18,7 +18,6 @@ module SessionsHelper
     @current_user = nil
   end
 
-  # Remembers the user to a permanent session.
   def remember(user)
     user.remember
     cookies.permanent.signed[:user_id] = user.id
