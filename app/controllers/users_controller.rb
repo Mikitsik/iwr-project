@@ -2,7 +2,7 @@
 
 class UsersController < ApplicationController
   def create
-    @user = User.new(user_params)
+    @user = User.new(user_params).call
     if @user.save
       @user.send_activation_email
       flash[:info] = "YaY! Check your mailbox to proceed! ;-)"
