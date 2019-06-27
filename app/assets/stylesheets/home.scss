@@ -114,7 +114,6 @@
 #info {
   position: absolute;
   z-index: 1300;
-//  padding: 200px 150px;
   top: 15vh;
   left: 0;
   right: 0;
@@ -168,4 +167,8 @@
 }
 .lightSpeedOut {
   animation: lightSpeedOut 1.2s ease-out;
+}
+.contact-info {
+  display: flex;
+  flex-wrap: wrap;
 }
