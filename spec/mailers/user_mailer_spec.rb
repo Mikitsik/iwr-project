@@ -1,31 +1,37 @@
 require "rails_helper"
 
 RSpec.describe UserMailer, type: :mailer do
-  describe "account_activation" do
-    let(:mail) { UserMailer.account_activation }
+  let(:user) do
+    double('John Doe', name: 'John', email: 'johndoe@email.com',
+      activation_token: 'igtRo_75YGooIuRbOCesyw',
+      reset_token: 'OkTq_stL9VmJNBV4P7v8jg')
+  end
+
+  context "account_activation" do
+    subject { described_class.account_activation(user) }
 
     it "renders the headers" do
-      expect(mail.subject).to eq("Account activation")
-      expect(mail.to).to eq(["to@example.org"])
-      expect(mail.from).to eq(["from@example.com"])
+      expect(subject.subject).to eq("Account activation")
+      expect(subject.to).to eq(["johndoe@email.com"])
+      expect(subject.from).to eq(["from@example.com"])
     end
 
     it "renders the body" do
-      expect(mail.body.encoded).to match("Hi")
+      expect(subject.body.encoded).to match("Hello,")
     end
   end
 
-  describe "password_reset" do
-    let(:mail) { UserMailer.password_reset }
+  context "password_reset" do
+    subject { described_class.password_reset(user) }
 
     it "renders the headers" do
-      expect(mail.subject).to eq("Password reset")
-      expect(mail.to).to eq(["to@example.org"])
-      expect(mail.from).to eq(["from@example.com"])
+      expect(subject.subject).to eq("Password reset")
+      expect(subject.to).to eq(["johndoe@email.com"])
+      expect(subject.from).to eq(["from@example.com"])
     end
 
     it "renders the body" do
-      expect(mail.body.encoded).to match("Hi")
+      expect(subject.body.encoded).to match("To reset")
     end
   end
 
