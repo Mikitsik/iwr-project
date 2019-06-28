@@ -28,7 +28,6 @@ Rails.application.routes.draw do
     resource :education, only: %i[edit update]
   end
 
-
   resources :vacancies, param: :vac_id, except: %i[edit]
   resources :users, param: :user_id, except: %i[index new show]
   resources :profiles, param: :user_id, only: %i[show edit update]
