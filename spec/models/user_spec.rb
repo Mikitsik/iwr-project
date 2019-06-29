@@ -1,7 +1,5 @@
 require 'rails_helper'
 
-require 'rails_helper'
-
 RSpec.describe User, type: :model do
   let(:user) { create(:user) }
   let(:valid_emails) { %w[user@example.com USER@foo.COM A_US-ER@foo.bar.org first.last@foo.jp alice+bob@baz.cn] }
@@ -92,7 +90,7 @@ RSpec.describe User, type: :model do
 
   describe '#authenticated?' do
     it 'authenticated? should return false for a user with nil digest' do
-      expect(create(:user).authenticated?('')).to eq(false)
+      expect(create(:user).authenticated?(:remember, '')).to eq(false)
     end
   end
 end
