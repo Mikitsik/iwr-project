@@ -17,8 +17,8 @@ gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 group :development, :test do
-  gem 'capybara', '>= 2.15'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'capybara', '>= 2.15'
   gem 'rspec-rails', '~> 3.8'
   gem 'rubocop'
 end
