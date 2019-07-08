@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  root 'home#index'
+  get 'home/index'
+
   get 'password_resets/new'
   get 'password_resets/edit'
-  root 'home#index'
-
-  get 'home/index'
 
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
